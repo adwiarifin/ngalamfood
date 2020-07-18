@@ -10,6 +10,9 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
+    env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
 
     steps:
     - uses: actions/checkout@v2
@@ -36,10 +39,11 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
+    - name: Migrate Database
+      run: php artisan migrate
+    - name: Seed Database
+      run: php artisan db:seed
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit --coverage-clover=coverage.xml
     - name: CodeCoverage
       uses: codecov/codecov-action@v1
