@@ -18,8 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/person', 'PersonController@all');
-Route::get('/person/{id}', 'PersonController@show');
-Route::post('/person', 'PersonController@store');
-Route::put('/person/{id}', 'PersonController@update');
-Route::delete('/person/{id}', 'PersonController@delete');
+Route::get('/person', 'PersonController@all')->name('person.index');
+Route::get('/person/{id}', 'PersonController@show')->name('person.show');
+Route::post('/person', 'PersonController@store')->name('person.store');
+Route::put('/person/{id}', 'PersonController@update')->name('person.update');
+Route::delete('/person/{id}', 'PersonController@delete')->name('person.delete');
