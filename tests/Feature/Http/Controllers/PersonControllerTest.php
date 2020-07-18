@@ -23,6 +23,7 @@ class PersonControllerTest extends TestCase
             'last_name' => $lastName,
         ]);
 
+        var_dump($response);
         $response
             ->assertStatus(201)
             ->assertJson([
