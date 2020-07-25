@@ -21,7 +21,7 @@ jobs:
         script: |
           cd ${{ secrets.PATH }}
           git pull
-          composer install --optimize-autoloader --no-dev
+          composer.phar install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --no-suggest --optimize-autoloader
           php artisan migrate --force
           php artisan config:cache
           php artisan route:cache
