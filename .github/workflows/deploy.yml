@@ -17,11 +17,10 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script_stop: true
         script: |
           cd ${{ secrets.PATH }}
           git pull
-          composer.phar install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --no-suggest --optimize-autoloader
+          composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --no-suggest --optimize-autoloader
           php artisan migrate --force
           php artisan config:cache
           php artisan route:cache
