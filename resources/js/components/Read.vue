@@ -7,7 +7,7 @@
         <br>
         <div class="row">
           <div class="col-md-10">
-            <h4>Persons</h4>
+            <h4>Orang</h4>
           </div>
           <div class="col-md-2">
             <!-- push router ke form membuat data -->
