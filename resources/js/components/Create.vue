@@ -49,7 +49,7 @@ export default {
     addData() {
       // post data ke api menggunakan axios
       axios
-        .post("http://localhost:8000/api/person", {
+        .post("/person", {
           first_name: this.form.firstName,
           last_name: this.form.lastName
         })

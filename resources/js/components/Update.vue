@@ -53,7 +53,7 @@ export default {
     loadData() {
       // load data berdasarkan id
       axios
-        .get("http://localhost:8000/api/person/" + this.$route.params.id)
+        .get("/person/" + this.$route.params.id)
         .then(response => {
           // post value yang dari response ke form
           this.form.firstName = response.data.first_name;
@@ -63,7 +63,7 @@ export default {
     updateData() {
       // put data ke api menggunakan axios
       axios
-        .put("http://localhost:8000/api/person/" + this.$route.params.id, {
+        .put("/person/" + this.$route.params.id, {
           first_name: this.form.firstName,
           last_name: this.form.lastName
         })
