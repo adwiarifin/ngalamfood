@@ -25,7 +25,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
     - name: Cache Node modules
-      id: composer-cache
+      id: node-cache
       uses: actions/cache@v2
       with:
         path: node_modules
@@ -36,7 +36,7 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Install Node modules
-      if: steps.composer-cache.outputs.cache-hit != 'true'
+      if: steps.node-cache.outputs.cache-hit != 'true'
       run: npm install
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
