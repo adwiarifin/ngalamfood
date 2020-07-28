@@ -1,39 +1,19 @@
 require('./bootstrap');
 
-window.Vue = require('vue');
-
 // import dependecies tambahan
-import VueRouter from 'vue-router';
-import VueAxios from 'vue-axios';
-import Axios from 'axios';
+import Vue from 'vue';
+import Vuetify from '@/plugins/vuetify.js';
 
-Vue.use(VueRouter,VueAxios,Axios);
+// Route information for vue Router
+import Routes from '@/js/routes.js';
 
-// import file yang dibuat tadi
-import App from './components/App.vue';
-import Create from './components/Create.vue';
-import Read from './components/Read.vue';
-import Update from './components/Update.vue';
-
-// membuat router
-const routes = [
-    {
-        name: 'read',
-        path: '/',
-        component: Read
-    },
-    {
-        name: 'create',
-        path: '/create',
-        component: Create
-    },
-    {
-        name: 'update',
-        path: '/detail/:id',
-        component: Update
-    }
-]
+// component File
+import App from '@/js/components/app'
 
 
-const router = new VueRouter({ mode: 'history', routes: routes });
-new Vue(Vue.util.extend({ router }, App)).$mount("#app");
+const app = new Vue({
+    el:'#app',
+    router: Routes,
+    vuetify: Vuetify,
+    render: h => h(App),
+})
