@@ -8,11 +8,10 @@ import Vuetify from '@/plugins/vuetify.js';
 import Routes from '@/js/routes.js';
 
 // component File
-import App from '@/js/components/app'
-
+import App from '@/js/components/App';
 
 const app = new Vue({
-    el:'#app',
+    el: '#app',
     router: Routes,
     vuetify: Vuetify,
     render: h => h(App),

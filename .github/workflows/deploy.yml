@@ -22,7 +22,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        source: "public/css/*,public/js/*"
+        source: "public/css/*,public/js/*,public/mix-manifest.json"
         target: "${{ secrets.PATH }}"
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.2
