@@ -8,14 +8,26 @@ jobs:
   deploy:
 
     runs-on: ubuntu-latest
+    env:
+      APP_URL: ${{ secrets.APP_URL }}
 
     steps:
     - uses: actions/checkout@v2
+    - name: Cache Node modules
+      id: node-cache
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install Node modules
+      if: steps.node-cache.outputs.cache-hit != 'true'
+      run: npm install
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Build Assets
-      run: |
-        cp .env.example .env
-        npm install
-        npm run production
+      run: npm run production
     - name: Copy Assets
       uses: appleboy/scp-action@master
       with:
