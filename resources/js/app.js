@@ -8,7 +8,7 @@ import Vuetify from '../plugins/vuetify.js';
 import Routes from './routes.js';
 
 // component File
-import App from './components/App.vue';
+import App from './components/App';
 
 const app = new Vue({
     el: '#app',
