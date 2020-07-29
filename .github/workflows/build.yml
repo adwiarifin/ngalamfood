@@ -13,15 +13,7 @@ jobs:
         DB_DATABASE: database/database.sqlite
 
     steps:
-    - name: List Version
-      run: |
-        php -v
-        node -v
-        npm -v
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2-beta
-      with:
-        node-version: '12'
     - name: Validate composer.json and composer.lock
       run: composer validate
     - name: Cache Composer packages
