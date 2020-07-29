@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Read from '@/js/components/Read'
-import Test from '@/js/components/Test'
-import Create from '@/js/components/Create'
-import Update from '@/js/components/Update'
+import Read from './components/Read'
+import Test from './components/Test'
+import Create from './components/Create'
+import Update from './components/Update'
 
 Vue.use(VueRouter);
 
