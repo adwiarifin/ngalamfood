@@ -13,6 +13,13 @@ jobs:
         DB_DATABASE: database/database.sqlite
 
     steps:
+    - name: Setup PHP
+      id: setup-php
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+    - name: Print PHP version
+      run: echo ${{ steps.setup-php.outputs.php-version }}
     - uses: actions/checkout@v2
     - name: Validate composer.json and composer.lock
       run: composer validate
